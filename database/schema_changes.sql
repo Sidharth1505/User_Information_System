@@ -17,6 +17,7 @@ CREATE TABLE  IF NOT EXISTS role(
 
 CREATE TABLE IF NOT EXISTS user(
   `id` int NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(45) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
   `contact_no` varchar(45) DEFAULT NULL,
@@ -24,6 +25,8 @@ CREATE TABLE IF NOT EXISTS user(
   `password` varchar(300) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `is_approved` tinyint DEFAULT NULL,
+  `timestamp` datetime DEFAULT NULL, 
+  `modified_by` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

@@ -26,8 +26,4 @@ class ConnectDb:
         cursor = self.connection.cursor()
         cursor.execute(query)
         self.connection.commit()
-
-    def append_data_user_role(self,query):
-        cursor = self.connection.cursor()
-        cursor.execute(query)
-        self.connection.commit()
+        
