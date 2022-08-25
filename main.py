@@ -1,6 +1,6 @@
-from utility.connect import ConnectDb
+from modules.auth.auth import UserAuthentication
 
-query = "select name from user_info_system.user where id = 101"
+tmp = UserAuthentication()
 
-tmp = ConnectDb()
-print(tmp.fetch_data(query))
+ans = tmp.signup()
+
