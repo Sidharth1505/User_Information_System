@@ -3,17 +3,45 @@ from utility.validate import Validation
 from utility.getinput import GetInput
 from utility.utils import Utility
 from utility.config import user_id,role_id
+from utility.queries import queries
+from modules.admin.admin import Admin
+from modules.user.user import User
+from datetime import datetime
 import maskpass
 import hashlib
 
 class UserAuthentication:
 
     def login(self):
-        return True
+        username = input('Enter the username : ')
+        password = maskpass.askpass(prompt = 'Enter the password :', mask = '*')
+        password = password.encode('utf-8')
+        check_password = hashlib.sha256(password).hexdigest()
+        if len(username or password) <1:
+            print('Enter Valid Input !')
+            self.login()
+        try:
+            if not Validation().if_exists(username) and Validation().is_allowed(username):
+                if Validation().valid_user(username, check_password):
+                    print('Login Success')
+                    if Validation().is_user(username):
+                        User(username)
+                    else:
+                        Admin(username)
+                else:
+                    print('Login Failed')
+                    self.login()
+            else:
+                print('Access Denied !! \n Try Again ')
+                self.login()
+        except ValueError:
+            print("Try Again !!")
+            self.login()
+
     
     def signup(self):
-        
-        user_name = input('Enter the User Name')
+
+        user_name = input('Enter the User Name: ')
         password = maskpass.askpass(prompt='Enter the Password : ', mask = '*')
         reenter_password = maskpass.askpass(prompt='Please enter the password again : ', mask='*')
 
@@ -26,14 +54,13 @@ class UserAuthentication:
         else:
             password = password.encode('utf-8')
             hashed = hashlib.sha256(password).hexdigest()
-            cursor = GetInput()
-            record = cursor.get_input()
+            record = GetInput().get_input()
             usercount = user_id + Utility().get_id_counter()
-            query = f"INSERT INTO user_info_system.user values({usercount},'{user_name}','{record['date_of_birth']}','{record['phone_no']}','{record['address']}','{hashed}', '{record['gender']}',0)"
+            query = queries['insert_user'].format(usercount,user_name,record['Full_name'],record['date_of_birth'],record['phone_no'],record['address'],hashed, record['gender'],0,user_name)
             ConnectDb().append_data_user(query)
 
-            query_for_role = f"INSERT INTO user_info_system.user_role_map values({usercount},{role_id})"
-            ConnectDb().append_data_user_role(query_for_role)
+            query_for_role = queries['insert_user_map'].format(usercount,role_id)
+            ConnectDb().append_data_user(query_for_role)
 
 
 
