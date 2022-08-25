@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS tmp ;
-USE tmp;
+CREATE DATABASE  IF NOT EXISTS user_info_system ;
+USE user_info_system;
 
 CREATE TABLE  IF NOT EXISTS profession(
   `id` int NOT NULL AUTO_INCREMENT,
@@ -18,10 +18,10 @@ CREATE TABLE  IF NOT EXISTS role(
 CREATE TABLE IF NOT EXISTS user(
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
-  `date_of_birth` datetime DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `contact_no` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `address` varchar(300) DEFAULT NULL,
+  `password` varchar(300) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `is_approved` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
