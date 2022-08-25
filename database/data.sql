@@ -1,0 +1,1 @@
+INSERT INTO user_info_system.user Values(101,'Sidharth Jain', 15/05/2001, 9729066397,'Jagadhri','password','Male',1);
