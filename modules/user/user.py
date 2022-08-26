@@ -9,14 +9,14 @@ class User:
     def menu_pop_up(self):
         while True:
             print('\n==========WELCOME TO USER MENU===========')
-            print('Enter 1 to view other users ')
+            print('Enter 1 to view details')
             print('Enter 2 to edit your details')
             print('Enter 3 to Logout')
             try:
                 choice = int(input('Enter Your Choice : '))
-                if choice == 1:
+                if choice == 2:
                     EditDetails(self.username)
-                elif choice == 2:
+                elif choice == 1:
                     View(self.username)
                 elif choice == 3:
                     print('Logging Out')
