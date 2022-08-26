@@ -2,11 +2,11 @@ from modules.auth.auth import UserAuthentication
 
 class Main:
     def startup(self):
-        print("==============WELCOME TO USER INFORMATION SYSTEM============\n")
+        print("\n\n==============WELCOME TO USER INFORMATION SYSTEM============\n")
 
-        print('Enter 1 for Login \n')
-        print('Enter 2 for SignIn \n')
-        print("Enter 0 to exit\n")
+        print('Enter 1 for Login ')
+        print('Enter 2 for SignIn ')
+        print("Enter 0 to exit")
         print('Enter Your Choice\n')
 
         choice = input("Enter your choice : ")
@@ -20,5 +20,5 @@ class Main:
         else:
             print("Invalid choice, try again...")
             self.startup()
-
-Main().startup()
+while True:
+    Main().startup()

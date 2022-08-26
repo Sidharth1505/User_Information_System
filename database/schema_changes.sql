@@ -33,12 +33,10 @@ CREATE TABLE IF NOT EXISTS user(
 
 
 CREATE TABLE  IF NOT EXISTS user_profession_map(
-  `user_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL ,
   `profession_id` int NOT NULL,
-  PRIMARY KEY (`user_id`),
   KEY `profession_id_idx` (`profession_id`),
   CONSTRAINT `profession_id` FOREIGN KEY (`profession_id`) REFERENCES `profession` (`id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 

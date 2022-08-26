@@ -10,11 +10,11 @@ class Admin:
     
     def menu_pop_up(self):
         while True:
-            print('\nAdmin Functionalities :\n')
-            print('Enter 1 for approve to user \n')
-            print('Enter 2 to delete a user\n')
-            print('Enter 3 for viewing the user details\n')
-            print('Enter 4 for Exit')
+            print('\nAdmin Functionalities :')
+            print('Enter 1 for approve to user ')
+            print('Enter 2 to delete a user')
+            print('Enter 3 for viewing the user details')
+            print('Enter 4 to Logout')
             try:
                 choice = int(input('Enter Your Choice : '))
                 if choice == 1:
@@ -24,8 +24,9 @@ class Admin:
                 elif choice ==3:
                     Filter(self.username)
                 elif choice == 4:
-                    print('Exiting')
-                    exit()
+                    print('Logging Out')
+                    print('Migrating to Login Page ')
+                    return
                 else:
                     print('Enter a Valid Input!')
                     self.menu_pop_up()
