@@ -16,7 +16,7 @@ queries = {
     'display_filter' : "select user_id,user_name,name,year(sysdate())-year(date_of_birth)as age ,address,gender,is_approved,modified_by,profession_name,role_name from user_info_system.user_profession_map t JOIN user_info_system.user u ON u.id = t.user_id JOIN user_info_system.profession r ON r.id = t.profession_id JOIN user_info_system.user_role_map m ON m.userid = t.user_id JOIN user_info_system.role l ON l.id = m.roleid where {} = '{}'",
     'display_all_username': 'select user_name from user_info_system.user',
     'delete_user': "DELETE FROM user_info_system.user where user_name = '{}'",
-    'edit_user' : "UPDATE schema.user SET {} ='{}', modified_by = '{}' where user_name = '{}'",
+    'edit_user' : "UPDATE user_info_system.user SET {} ='{}', modified_by = '{}' where user_name = '{}'",
     'display_my_details' : "select user_name, name,year(sysdate())-year(date_of_birth) as age , contact_no, address, gender from user_info_system.user where user_name = '{}'",
     'display_other' : "select name, contact_no,address from user_info_system.user"
 }

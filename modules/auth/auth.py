@@ -21,7 +21,7 @@ class UserAuthentication:
             print('Enter Valid Input !')
             self.login()
         try:
-            if not Validation().if_exists(username) :
+            if Validation().if_exists(username):
                 if Validation().valid_user(username, check_password) and Validation().is_allowed(username):
                     print('Login Success')
                     if Validation().is_user(username):
@@ -32,8 +32,9 @@ class UserAuthentication:
                     print('Login Failed')
                     self.login()
             else:
+                print(Validation().if_exists(username))
                 print('Access Denied !! \n Try Again ')
-                self.login()
+                return
         except ValueError:
             print("Try Again !!")
             return
