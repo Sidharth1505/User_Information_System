@@ -21,8 +21,8 @@ class UserAuthentication:
             print('Enter Valid Input !')
             self.login()
         try:
-            if not Validation().if_exists(username) and Validation().is_allowed(username):
-                if Validation().valid_user(username, check_password):
+            if not Validation().if_exists(username) :
+                if Validation().valid_user(username, check_password) and Validation().is_allowed(username):
                     print('Login Success')
                     if Validation().is_user(username):
                         User(username)
@@ -36,7 +36,7 @@ class UserAuthentication:
                 self.login()
         except ValueError:
             print("Try Again !!")
-            self.login()
+            return
 
     
     def signup(self):
@@ -48,7 +48,7 @@ class UserAuthentication:
         if password != reenter_password:
             print("Password Don't Match ")
             self.signup()
-        elif not Validation().if_exists(user_name):
+        elif Validation().if_exists(user_name):
             print('User Name already exists')
             self.signup()
         else:
@@ -61,6 +61,11 @@ class UserAuthentication:
 
             query_for_role = queries['insert_user_map'].format(usercount,role_id)
             ConnectDb().append_data_user(query_for_role)
+            if len(record['profession'])>1:
+                query_for_profession = queries['insert_profession_map'][0].format(usercount,record['profession'][0],usercount,record['profession'][1])
+            else:
+                query_for_profession = queries['insert_profession_map'][1].format(usercount, record['profession'][0])
+            ConnectDb().append_data_user(query_for_profession)
 
 
 

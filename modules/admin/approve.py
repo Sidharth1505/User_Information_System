@@ -17,7 +17,7 @@ class Approve:
     def approve_user(self):
         
         user_to_approve = input('Enter the username you want to approve ')
-        if not Validation().if_exists(user_to_approve):
+        if Validation().if_exists(user_to_approve):
             query = queries['approve'].format( self.username,user_to_approve)
             ConnectDb().append_data_user(query)
             print('Approval Done !')
