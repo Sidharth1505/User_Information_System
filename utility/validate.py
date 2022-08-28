@@ -1,11 +1,12 @@
 from unittest import result
 from utility.connect import ConnectDb
-from utility.queries import queries
+from utility.config import queries
 class Validation:
     def __init__(self):
         self.instance = ConnectDb()
 
     def is_user(self,username):
+        
         query = queries['is_user'].format(username)
         record = self.instance.fetch_data(query)[0][0]
         return record == 'user'

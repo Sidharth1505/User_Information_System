@@ -42,7 +42,7 @@ CREATE TABLE  IF NOT EXISTS user_profession_map(
 
 
 CREATE TABLE IF NOT EXISTS user_role_map(
-  `userid` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL ,
   `roleid` int NOT NULL,
   PRIMARY KEY (`userid`),
   KEY `roleid_idx` (`roleid`),
