@@ -1,4 +1,4 @@
-from utility.queries import queries
+from utility.config import queries
 from utility.connect import ConnectDb
 class View:
     def __init__(self,username):

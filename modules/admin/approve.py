@@ -1,4 +1,4 @@
-from utility.queries import queries
+from utility.config import queries
 from utility.connect import ConnectDb
 from utility.validate import Validation
 class Approve:
@@ -16,11 +16,11 @@ class Approve:
     
     def approve_user(self):
         
-        user_to_approve = input('Enter the username you want to approve ')
+        user_to_approve = input('Enter the username you want to approve : ')
         if Validation().if_exists(user_to_approve):
             query = queries['approve'].format( self.username,user_to_approve)
             ConnectDb().append_data_user(query)
-            print('Approval Done !')
+            print('\n Approval Done !\n')
         else:
             print('Enter a Valid UserName from the List\n')
 

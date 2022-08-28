@@ -2,8 +2,8 @@ from utility.connect import ConnectDb
 from utility.validate import Validation
 from utility.getinput import GetInput
 from utility.utils import Utility
-from utility.config import user_id,role_id
-from utility.queries import queries
+from utility.config import role_id
+from utility.config import queries
 from modules.admin.admin import Admin
 from modules.user.user import User
 from datetime import datetime
@@ -21,8 +21,8 @@ class UserAuthentication:
             print('Enter Valid Input !')
             self.login()
         try:
-            if Validation().if_exists(username):
-                if Validation().valid_user(username, check_password) and Validation().is_allowed(username):
+            if Validation().if_exists(username) and Validation().is_allowed(username):
+                if Validation().valid_user(username, check_password):
                     print('Login Success')
                     if Validation().is_user(username):
                         User(username)
@@ -41,7 +41,6 @@ class UserAuthentication:
 
     
     def signup(self):
-
         user_name = input('Enter the User Name: ')
         password = maskpass.askpass(prompt='Enter the Password : ', mask = '*')
         reenter_password = maskpass.askpass(prompt='Please enter the password again : ', mask='*')
@@ -51,12 +50,11 @@ class UserAuthentication:
             self.signup()
         elif Validation().if_exists(user_name):
             print('User Name already exists')
-            self.signup()
         else:
             password = password.encode('utf-8')
             hashed = hashlib.sha256(password).hexdigest()
             record = GetInput().get_input()
-            usercount = user_id + Utility().get_id_counter()
+            usercount = Utility().get_id_counter()+1
             query = queries['insert_user'].format(usercount,user_name,record['Full_name'],record['date_of_birth'],record['phone_no'],record['address'],hashed, record['gender'],0,user_name)
             ConnectDb().append_data_user(query)
 

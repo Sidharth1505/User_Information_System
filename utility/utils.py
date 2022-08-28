@@ -1,5 +1,5 @@
 from utility.connect import ConnectDb
-from utility.queries import queries
+from utility.config import queries
 
 class Utility:
     def get_id_counter(self):

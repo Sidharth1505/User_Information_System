@@ -1,6 +1,6 @@
 
 from multiprocessing.sharedctypes import Value
-from utility.queries import queries
+from utility.config import queries
 from utility.connect import ConnectDb
 from utility.validate import Validation
 from utility.config import mapping
@@ -38,6 +38,7 @@ class Filter:
     def show_all(self):
         query = queries['display_all_details']
         record = self.get_record(query)
+        print('\n')
         for i in record:
             print(i)
 
@@ -45,6 +46,7 @@ class Filter:
         print('Select the username from the below list \n')
         query = queries['fetch_username']
         record = self.get_record(query)
+        print('\n')
         for i in record:
             print(i)
 
@@ -52,6 +54,7 @@ class Filter:
         if not Validation().if_exists(username):
             query = queries['display_specific_user'].format(username)
             record = self.get_record(query)
+            print('\n')
             for i in record:
                 print(i)
                 print('\n')
@@ -74,7 +77,7 @@ class Filter:
                 data = self.get_input(mapping[choice])
                 query = queries['display_filter'].format(mapping[choice],data)
                 record = self.get_record(query)
-
+                print('\n')
                 for i in record:
                     print(i)
                 print('\n')

@@ -1,6 +1,6 @@
 import imp
 from utility.config import user_mapping
-from utility.queries import queries
+from utility.config import queries
 from utility.connect import ConnectDb
 class EditDetails:
 
@@ -11,6 +11,7 @@ class EditDetails:
     def view_my_details(self,username):
         query = queries['display_my_details'].format(username)
         record = ConnectDb().fetch_data(query)
+        print('\n')
         for i in record:
             print(i)
         print('\n')
