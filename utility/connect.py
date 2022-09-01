@@ -27,3 +27,12 @@ class ConnectDb:
         cursor.execute(query)
         self.connection.commit()
         
+    def get_proc(self,procedure):
+        cursor = self.connection.cursor()
+        cursor.callproc(procedure)
+        record = []
+        for result in cursor.stored_results():
+            record = result.fetchall()
+
+        return record
+

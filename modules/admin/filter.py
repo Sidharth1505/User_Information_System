@@ -44,14 +44,13 @@ class Filter:
 
     def show_specific(self):
         print('Select the username from the below list \n')
-        query = queries['fetch_username']
-        record = self.get_record(query)
+        record = ConnectDb().get_proc('getUserNames')
         print('\n')
         for i in record:
             print(i)
-
+    
         username = input('\nEnter the UserName : ')
-        if not Validation().if_exists(username):
+        if Validation().if_exists(username):
             query = queries['display_specific_user'].format(username)
             record = self.get_record(query)
             print('\n')

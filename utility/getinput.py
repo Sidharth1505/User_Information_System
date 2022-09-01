@@ -46,3 +46,10 @@ class GetInput:
                 return user_input
             print(f"Invalid !, please enter a valid 10 digit ")
             return GetInput().validate_input()
+
+
+    def validate_mobile(self,user_input):
+        if math.floor(math.log10(user_input)+1) == 10:
+            return True
+        else:
+            return False
