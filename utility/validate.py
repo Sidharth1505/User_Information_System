@@ -6,7 +6,6 @@ class Validation:
         self.instance = ConnectDb()
 
     def is_user(self,username):
-        
         query = queries['is_user'].format(username)
         record = self.instance.fetch_data(query)[0][0]
         return record == 'user'
